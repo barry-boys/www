@@ -1,3 +1,3 @@
-# www
+# WWW
 
-Company Home Website
+This is the source code for the website.
