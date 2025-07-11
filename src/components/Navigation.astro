@@ -1,0 +1,230 @@
+---
+const navItems = [
+  { label: "Home", href: "#home" },
+  { label: "Services", href: "#services" },
+  { label: "About", href: "#about" },
+  { label: "Portfolio", href: "#portfolio" },
+  { label: "Contact", href: "#contact" },
+];
+---
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileButton = document.getElementById("mobileMenuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuIcon = document.getElementById("menuIcon");
+    const closeIcon = document.getElementById("closeIcon");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+
+    // Intersection Observer for automatic section detection
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    const setInitialActiveState = () => {
+      const currentHash = window.location.hash || "#home";
+      navLinks.forEach((link) => {
+        if (link.getAttribute("href") === currentHash) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    };
+
+    // Set initial state on page load
+    setInitialActiveState();
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -80% 0px", // Trigger when section is 20% visible
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Remove active class from all links
+          navLinks.forEach((link) => link.classList.remove("active"));
+
+          // Add active class to current section's link
+          const activeLink = document.querySelector(
+            `a[href="#${entry.target.id}"]`
+          );
+          if (activeLink) {
+            activeLink.classList.add("active");
+          }
+
+          const newHash = `#${entry.target.id}`;
+          if (window.location.hash !== newHash) {
+            history.replaceState(null, "", newHash);
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Start observing all sections
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Handle direct hash navigation
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        // Remove active from all
+        navLinks.forEach((l) => l.classList.remove("active"));
+        // Add active to clicked link
+        link.classList.add("active");
+      });
+    });
+
+    if (mobileButton && mobileMenu && menuIcon && closeIcon) {
+      let isOpen = false;
+
+      const toggleMenu = () => {
+        isOpen = !isOpen;
+        if (isOpen) {
+          mobileMenu.classList.remove("hidden");
+          closeIcon.classList.remove("hidden");
+          menuIcon.classList.add("hidden");
+        } else {
+          mobileMenu.classList.add("hidden");
+          closeIcon.classList.add("hidden");
+          menuIcon.classList.remove("hidden");
+        }
+      };
+
+      mobileButton.addEventListener("click", toggleMenu);
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (isOpen) toggleMenu();
+        });
+      });
+
+      document.addEventListener("click", (e) => {
+        const target = e.target as Node;
+        if (
+          target &&
+          !mobileMenu.contains(target) &&
+          !mobileButton.contains(target)
+        ) {
+          if (isOpen) toggleMenu();
+        }
+      });
+    }
+  });
+</script>
+
+<nav
+  class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200/20"
+>
+  <div class="container mx-auto px-6">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center space-x-2">
+        <div class="text-blue-800 mr-2 h-8 w-8">
+          <svg
+            class="h-8 w-8 text-gray-900"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v6a2 2 0 002 2h4a2 2 0 002-2V5zM21 15a2 2 0 00-2-2h-4a2 2 0 00-2 2v2a2 2 0 002 2h4a2 2 0 002-2v-2z"
+            ></path>
+          </svg>
+        </div>
+        <span class="text-2xl font-bold text-gray-900">&lt;name&gt; LLC</span>
+      </div>
+
+      <div class="hidden md:flex items-center space-x-8">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="nav-link text-gray-700 hover:text-blue-800 transition-colors duration-200"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="md:hidden">
+        <button
+          id="mobileMenuButton"
+          class="text-gray-700 p-2 rounded-md hover:bg-gray-100 transition-colors"
+        >
+          <svg
+            id="menuIcon"
+            class="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg
+            id="closeIcon"
+            class="h-6 w-6 hidden"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="mobileMenu"
+      class="md:hidden py-4 border-t border-gray-200/20 hidden"
+    >
+      <div class="flex flex-col space-y-4">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="nav-link font-medium px-2 py-1 mobile-link text-gray-700 hover:text-blue-800 transition-colors duration-200"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .nav-link.active {
+    color: #1e40af;
+    border-bottom: 2px solid #1e40af;
+    padding-bottom: 2px;
+    font-weight: 600;
+  }
+
+  #mobileMenu {
+    transition: all 0.3s ease;
+  }
+
+  @supports (backdrop-filter: blur(12px)) {
+    nav {
+      backdrop-filter: blur(12px);
+    }
+  }
+
+  :global(body) {
+    margin-top: 64px;
+  }
+</style>
