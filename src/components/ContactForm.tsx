@@ -127,7 +127,7 @@ export const ContactForm = () => {
         disabled={isSubmitting}
         className="w-full bg-blue-800 text-white px-6 py-4 rounded-lg hover:bg-blue-900 transition-colors duration-200 flex items-center justify-center group"
       >
-        Send Message
+        {isSubmitting ? "Sending..." : "Send Message"}
         <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transhtmlForm duration-200" />
       </button>
     </form>
