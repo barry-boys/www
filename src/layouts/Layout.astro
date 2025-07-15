@@ -1,4 +1,5 @@
 ---
+import { Toaster } from "@/components/ui/sonner";
 import "../styles/global.css";
 ---
 
@@ -13,6 +14,7 @@ import "../styles/global.css";
   </head>
   <body>
     <slot />
+    <Toaster position="bottom-right" client:load />
   </body>
 </html>
 
