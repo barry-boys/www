@@ -3,7 +3,7 @@ const navItems = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
-  { label: "Portfolio", href: "#portfolio" },
+  // { label: "Portfolio", href: "#portfolio" },
   { label: "Contact", href: "#contact" },
 ];
 ---
@@ -68,14 +68,14 @@ const navItems = [
     });
 
     // Handle direct hash navigation
-    navLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        // Remove active from all
-        navLinks.forEach((l) => l.classList.remove("active"));
-        // Add active to clicked link
-        link.classList.add("active");
-      });
-    });
+    // navLinks.forEach((link) => {
+    //   link.addEventListener("click", (e) => {
+    //     // Remove active from all
+    //     navLinks.forEach((l) => l.classList.remove("active"));
+    //     // Add active to clicked link
+    //      link.classList.add("active");
+    //   });
+    // });
 
     if (mobileButton && mobileMenu && menuIcon && closeIcon) {
       let isOpen = false;
@@ -135,7 +135,7 @@ const navItems = [
             ></path>
           </svg>
         </div>
-        <span class="text-2xl font-bold text-gray-900">&lt;name&gt; LLC</span>
+        <span class="text-2xl font-bold text-gray-900">CPB Dev</span>
       </div>
 
       <div class="hidden md:flex items-center space-x-8">

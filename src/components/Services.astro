@@ -6,31 +6,56 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Code2, MessageSquare, Paintbrush, RefreshCw } from "lucide-react";
 
 const services = [
   {
-    icon: "",
-    title: "Title",
-    description: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-    features: ["Lorem impsum", "Lorem impsum", "Lorem impsum", "Lorem impsum"],
+    icon: Code2,
+    title: "Custom UI Development",
+    description:
+      "Build modern, responsive web applications using cutting-edge frameworks and best practices.",
+    features: [
+      "React and other modern frameworks",
+      "Component-based architecture",
+      "Performance optimization",
+      "Cross-browser compatibility",
+    ],
   },
   {
-    icon: "",
-    title: "Title",
-    description: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-    features: ["Lorem impsum", "Lorem impsum", "Lorem impsum", "Lorem impsum"],
+    icon: Paintbrush,
+    title: "Design Implementation",
+    description:
+      "Transform Figma, Sketch, or Adobe XD files into fully functional, responsive interfaces.",
+    features: [
+      "Figma to code conversion",
+      "Pixel-perfect implementation",
+      "Design system development",
+      "Responsive breakpoints",
+    ],
   },
   {
-    icon: "",
-    title: "Title",
-    description: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-    features: ["Lorem impsum", "Lorem impsum", "Lorem impsum", "Lorem impsum"],
+    icon: RefreshCw,
+    title: "Frontend Modernization",
+    description:
+      "Migrate legacy applications to modern UI frameworks with improved user experiences.",
+    features: [
+      "Legacy code migration",
+      "Performance improvements",
+      "Modern framework integration",
+      "Minimal downtime deployment",
+    ],
   },
   {
-    icon: "",
-    title: "Title",
-    description: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-    features: ["Lorem impsum", "Lorem impsum", "Lorem impsum", "Lorem impsum"],
+    icon: MessageSquare,
+    title: "Consulting & Strategy",
+    description:
+      "Expert guidance on UI/UX decisions, technology choices, and development roadmaps.",
+    features: [
+      "Technical architecture review",
+      "UI/UX audit and recommendations",
+      "Technology stack planning",
+      "Team training and mentorship",
+    ],
   },
 ];
 ---
@@ -59,9 +84,9 @@ const services = [
             key={index}
             className="group hover:shadow-2xl transition-all duration-300 border-0 shadow-lg hover:-translate-y-2"
           >
-            <CardHeader className="text-center pb-4">
-              <div class="mx-auto w-16 h-16 bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                {/* <service.icon class="h-8 w-8 text-purple-600" /> */}
+            <CardHeader className="text-center">
+              <div class="mx-auto w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-300 group-hover:from-blue-400 group-hover:to-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <service.icon className="h-8 w-8 text-blue-600 group-hover:text-white" />
               </div>
               <CardTitle className="text-xl font-bold text-gray-900">
                 {service.title}
@@ -74,7 +99,7 @@ const services = [
               <ul class="space-y-2">
                 {service.features.map((feature) => (
                   <li class="text-sm text-gray-500 flex items-center">
-                    <div class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-3" />
+                    <div class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3" />
                     {feature}
                   </li>
                 ))}
