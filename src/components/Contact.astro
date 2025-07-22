@@ -1,0 +1,75 @@
+---
+import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { ContactForm } from "./ContactForm";
+---
+
+<section id="contact" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Let's Work Together
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Ready to transform your designs into exceptional user experiences? We'd
+        love to hear about your project and discuss how we can help bring your
+        vision to life.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
+        <div class="space-y-6">
+          <div class="flex items-center">
+            <div class="bg-blue-100 p-3 rounded-lg mr-4">
+              <Mail className="h-6 w-6 text-blue-800" />
+            </div>
+            <div>
+              <div class="font-semibold text-gray-900">Email</div>
+              <div class="text-gray-600">lorem@ipsum.com</div>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <div class="bg-blue-100 p-3 rounded-lg mr-4">
+              <MapPin className="h-6 w-6 text-blue-800" />
+            </div>
+            <div>
+              <div class="font-semibold text-gray-900">Location</div>
+              <div class="text-gray-600">Lorem ipsum, IL</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12">
+          <h4 class="text-lg font-semibold text-gray-900 mb-4">
+            Why Choose CPB Dev ?
+          </h4>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <div class="w-2 h-2 bg-blue-800 rounded-full mt-2 mr-3"></div>
+              <span class="text-gray-700">Frontend Specialists </span>
+            </li>
+            <li class="flex items-start">
+              <div class="w-2 h-2 bg-blue-800 rounded-full mt-2 mr-3"></div>
+              <span class="text-gray-700">Work directly with developers </span>
+            </li>
+            <li class="flex items-start">
+              <div class="w-2 h-2 bg-blue-800 rounded-full mt-2 mr-3"></div>
+              <span class="text-gray-700"
+                >Maintainable and scalable solutions
+              </span>
+            </li>
+            <li class="flex items-start">
+              <div class="w-2 h-2 bg-blue-800 rounded-full mt-2 mr-3"></div>
+              <span class="text-gray-700">Proven Results </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <ContactForm client:load />
+      </div>
+    </div>
+  </div>
+</section>

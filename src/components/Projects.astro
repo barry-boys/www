@@ -1,0 +1,108 @@
+---
+import { Button } from "./ui/button";
+import { Card, CardContent } from "./ui/card";
+import { ExternalLink, GitBranch } from "lucide-react";
+
+const projects = [
+  {
+    title: "Lorem ipsum dolor",
+    category: "Lorem ipsum",
+    description: "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+    image:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop",
+    tags: ["Lorem ipsum", "Lorem ipsum", "Lorem ipsum", "Lorem ipsum"],
+  },
+  {
+    title: "Lorem ipsum dolor",
+    category: "Lorem ipsum",
+    description: "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+    image:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop",
+    tags: ["Lorem ipsum", "Lorem ipsum", "Lorem ipsum", "Lorem ipsum"],
+  },
+];
+---
+
+<section id="portfolio" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Featured
+        <span
+          class="bg-gradient-to-r from-blue-800 to-blue-500 bg-clip-text text-transparent"
+        >
+          Work</span
+        >
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Lorem ipsum dolor sit amet consectetur adipiscing elit
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {
+        projects.map((project, index) => (
+          <Card
+            key={index}
+            className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src={project.image}
+                alt={project.title}
+                class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="absolute bottom-4 left-4 right-4 flex gap-2">
+                  <Button
+                    size="sm"
+                    className="bg-white/20 text-white border-white/30 hover:bg-white/30 backdrop-blur-sm"
+                  >
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    View Live
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="bg-white/20 text-white border-white/30 hover:bg-white/30 backdrop-blur-sm"
+                  >
+                    <GitBranch className="h-4 w-4 mr-2" />
+                    Code
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            <CardContent className="p-6">
+              <div class="text-sm text-blue-600 font-medium mb-2">
+                {project.category}
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
+                {project.title}
+              </h3>
+              <p class="text-gray-600 mb-4">{project.description}</p>
+
+              <div class="flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span class="px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 text-xs font-medium rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        ))
+      }
+    </div>
+
+    <div class="text-center mt-12">
+      <Button
+        size="lg"
+        variant="outline"
+        className="border-blue-400 text-blue-600 hover:bg-blue-50"
+      >
+        View All Projects
+      </Button>
+    </div>
+  </div>
+</section>

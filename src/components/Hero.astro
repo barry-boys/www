@@ -1,0 +1,55 @@
+---
+import { ArrowRight, Sparkles } from "lucide-react";
+---
+
+<section id="home" class="bg-gradient-to-br from-blue-50 to-cyan-50 py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <div
+          class="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6"
+        >
+          <Sparkles className="h-4 w-4 mr-2" />
+          Expert UI development services
+        </div>
+        <h1
+          class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+        >
+          Transform your ideas into
+          <span class="text-blue-800"> intuitive digital experiences</span>
+        </h1>
+        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+          We specialize in crafting user interfaces that not only look stunning
+          but deliver exceptional user experiences. From concept to deployment,
+          our focused team brings your vision to life with precision and
+          attention to detail.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            class="bg-blue-800 text-white px-8 py-4 rounded-lg hover:bg-blue-900 transition-colors duration-200 flex items-center justify-center group"
+            href="#contact"
+          >
+            Start Your Project
+            <ArrowRight
+              className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200"
+            />
+          </a>
+        </div>
+      </div>
+      <div class="relative">
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-2xl transform rotate-3"
+        >
+        </div>
+        <div class="relative bg-white rounded-2xl p-8 shadow-xl">
+          <img
+            src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600"
+            loading="eager"
+            alt="UX/UI Design workspace"
+            class="w-full h-64 object-cover rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
